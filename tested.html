@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pruebas del Infierno</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: 'Courier New', monospace;
+      text-align: center;
+    }
+    .prueba {
+      margin: 40px;
+      padding: 20px;
+      border: 2px solid red;
+      background-color: #111;
+    }
+    .oculto {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>PRUEBAS DEL INFIERNO</h1>
+  <p>Completa todas las pruebas para desbloquear la contraseña maldita.</p>
+
+  <!-- Prueba 1: Esperar 2 minutos -->
+  <div class="prueba">
+    <h2>Prueba 1: Espera al contador</h2>
+    <p>Demuestra que puedes esperar... sin hacer nada.</p>
+    <h3 id="contador">120</h3>
+  </div>
+
+  <!-- Prueba 2: Clicks repetitivos -->
+  <div class="prueba oculto" id="p2">
+    <h2>Prueba 2: Haz clic 100 veces</h2>
+    <button onclick="clickCounter()">Click aquí</button>
+    <p id="contadorClicks">0 / 100</p>
+  </div>
+
+  <!-- Prueba 3: Acertijo -->
+  <div class="prueba oculto" id="p3">
+    <h2>Prueba 3: Acertijo macabro</h2>
+    <p>"Camina sin patas, silba sin boca, golpea sin manos. ¿Qué soy?"</p>
+    <input type="text" id="respuesta3">
+    <button onclick="verificarRiddle()">Enviar</button>
+  </div>
+
+  <!-- Prueba 4: Letra de canción -->
+  <div class="prueba oculto" id="p4">
+    <h2>Prueba 4: ¿Estás prestando atención?</h2>
+    <p>¿Cuál es la última palabra de la famosa canción “Never Gonna Give You Up”?</p>
+    <input type="text" id="respuesta4">
+    <button onclick="verificarVideo()">Enviar</button>
+  </div>
+
+  <!-- Prueba 5: Memoria -->
+  <div class="prueba oculto" id="p5">
+    <h2>Prueba 5: Memoria Infernal</h2>
+    <p>Memoriza este patrón: <strong>X9Y3Z7</strong></p>
+    <input type="text" id="memoria">
+    <button onclick="verificarMemoria()">Enviar</button>
+  </div>
+
+  <!-- Prueba 6: Contraseña final -->
+  <div class="prueba oculto" id="p6">
+    <h2>Prueba Final</h2>
+    <p>¡Felicidades, alma torturada! Tu contraseña es:</p>
+    <code>m1N2o3P4q5R6s7T8u9V0w1X2y3Z4a5B6c7D8e9F0g1H2i3J4k5L6m7N8o9P0q1R2s3T4u5V6w7X8y9Z0a1B2c3D4e5F6g7H8i9J0k1L2m3N4o5P6q7R8s9T0u1V2w3X4</code>
+  </div>
+
+  <script>
+    // Prueba 1: Temporizador de 2 minutos
+    let segundos = 120;
+    const cuentaAtras = setInterval(() => {
+      segundos--;
+      document.getElementById("contador").innerText = segundos;
+      if (segundos <= 0) {
+        clearInterval(cuentaAtras);
+        desbloquear('p2');
+      }
+    }, 1000);
+
+    // Desbloquear secciones
+    function desbloquear(id) {
+      document.getElementById(id).classList.remove('oculto');
+    }
+
+    // Prueba 2: Clicks
+    let clicks = 0;
+    function clickCounter() {
+      clicks++;
+      document.getElementById("contadorClicks").innerText = clicks + " / 100";
+      if (clicks >= 100) desbloquear('p3');
+    }
+
+    // Prueba 3: Riddle
+    function verificarRiddle() {
+      const r = document.getElementById("respuesta3").value.toLowerCase().trim();
+      if (r === "viento") desbloquear('p4');
+    }
+
+    // Prueba 4: Letra de canción
+    function verificarVideo() {
+      const r = document.getElementById("respuesta4").value.toLowerCase().trim();
+      if (r === "desert") desbloquear('p5');
+    }
+
+    // Prueba 5: Memoria
+    function verificarMemoria() {
+      const r = document.getElementById("memoria").value.trim();
+      if (r === "X9Y3Z7") desbloquear('p6');
+    }
+  </script>
+
+</body>
+</html>
+
